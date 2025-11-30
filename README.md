@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
+# Last Bite Standing 🍽️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A location-based restaurant recommendation game.**
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+**Last Bite Standing** helps users find restaurants in a fun and interactive way. Using a **tournament-style bracket**, users make quick choices between two restaurants at a time, eliminating indecision until a single winner is crowned.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Perfect for friends, dates, or anyone struggling to decide where to eat!
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Location-based**: Get restaurants near you.  
+- **Tournament format**: Choose between two restaurants until a winner emerges.  
+- **Customizable search**: Select by **radius** (1–10 miles) or **number of restaurants** (8, 16, 32).  
+- **Preference tracking**: Each round collects user choices for better recommendations.  
+- **Final recommendation screen**:  
+  - Restaurant name, photo, rating, distance, hours  
+  - Map & directions  
+  - Option to save to favorites or start over  
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## How It Works
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Ask for Location Permission**  
+   The app requests access to your device location.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. **Fetch Restaurants**  
+   Using the **Google Places API** or **Yelp API**, the app retrieves nearby restaurants based on the user's location and chosen criteria.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. **Create Tournament Bracket**  
+   Restaurants are randomly paired in a bracket:  
+
+   
+4. **Play the Game**  
+- Two restaurants appear at a time.  
+- User selects one restaurant per match.  
+- Winners move forward until only one restaurant remains.
+
+5. **Final Recommendation**  
+- Shows the winning restaurant with reasoning based on your choices.  
+- Provides map, directions, photos, and hours.  
+- Options to **Start Over** or **Save to Favorites**.
+
+---
+
+## Tech Stack
+
+- **Frontend**: React, TailwindCSS  
+- **APIs**: Google Places API 
+- **State Management**: React Context / Hooks  
+- **Optional Features**: Favorites, category/mood-based filters  
+
+---
+
+## Why This App is Great
+
+- Always relevant: recommendations are location-based.  
+- Addictive tournament format.  
+- Simple to build and scale.  
+- Collects valuable user preference data.  
+- Expandable: food categories, cuisines, moods, or social features.
+
+---
+
+## Future Enhancements
+
+- **Social sharing**: compete with friends or see others’ winners.  
+- **Food mood categories**: “comfort food”, “healthy”, “adventurous”, etc.  
+- **User profiles & history**: track past tournaments and favorites.  
+- **Notifications**: alert users about nearby trending restaurants.
+
+---
+
+## License
+
+This project is open-source. Feel free to use and modify it under the [MIT License](LICENSE).
+

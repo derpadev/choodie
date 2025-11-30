@@ -1,13 +1,14 @@
+import { Home } from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import { LastBiteStanding } from "./pages/LastBiteStanding";
 
 function App() {
-
   return (
-    <>
-      <div>
-        <h1>Hello ZHAO</h1>
-      </div>
-    </>
-  )
+    <Routes>
+      <Route path ="/" element={<Home />} />
+       <Route path ="/LastBiteStanding" element={<LastBiteStanding/>} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
