@@ -1,41 +1,18 @@
 import { useEffect, useState } from "react";
+import { fetchNearbyRestaurants, type Restaurant } from "../services/placesApi";
 
 interface Location {
   lat: number;
   lon: number;
 }
 
-const restaurants = [
-  {
-    title: "Tacos Los Cholos",
-    image: "/TLC.jpg",
-    rating: "⭐⭐⭐⭐",
-    tags: "Food",
-  },
-  {
-    title: "i-Tea",
-    image: "/ITEASL.jpg",
-    rating: "⭐⭐⭐",
-    tags: "Drinks",
-  },
-  {
-    title: "Happy Lamb",
-    image: "/HAPPYLAMB.jpg",
-    rating: "⭐⭐⭐⭐⭐",
-    tags: "Food",
-  },
-  {
-    title: "Din Tai Fung",
-    image: "/DTF.jpg",
-    rating: "⭐⭐",
-    tags: "Food",
-  },
-];
-
 export const LastBiteStanding = () => {
   const [location, setLocation] = useState<Location | null>(null);
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [firstIndex, setFirstIndex] = useState(0);
   const [secondIndex, setSecondIndex] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -48,12 +25,29 @@ export const LastBiteStanding = () => {
         },
         (error) => {
           console.log("Error getting location:", error);
+          setError("Unable to get your location. Please enable location services.");
+          setLoading(false);
         }
       );
     } else {
-      alert("Geolocation is not supported by your browser.");
+      setError("Geolocation is not supported by your browser.");
+      setLoading(false);
     }
   }, []);
+
+  useEffect(() => {
+    if (location) {
+      fetchNearbyRestaurants(location.lat, location.lon)
+        .then((data) => {
+          setRestaurants(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setLoading(false);
+        });
+    }
+  }, [location]);
 
   const handleSelect = (selectedIndex: number) => {
     const nextIndex =
@@ -69,9 +63,17 @@ export const LastBiteStanding = () => {
     <div className="bg-[url('/LastBiteStandingBackground.jpg')] bg-cover bg-center min-h-screen">
       {/* Blur Overlay */}
       <div className="absolute inset-0 bg-black/30 backdrop-blur-sm">
-        {location ? (
+        {loading ? (
+          <div className="flex justify-center min-h-screen items-center font-bold text-white text-9xl text-shadow-lg">
+            Loading...
+          </div>
+        ) : error ? (
+          <div className="flex flex-col justify-center min-h-screen items-center font-bold text-white text-6xl text-shadow-lg text-center px-8">
+            <p className="mb-4">😔</p>
+            <p>{error}</p>
+          </div>
+        ) : restaurants.length > 0 ? (
           <>
-            {" "}
             {/* Cards Container */}
             <div className="relative flex justify-center min-h-screen items-center space-x-12">
               {/* Card 1 */}
@@ -90,7 +92,6 @@ export const LastBiteStanding = () => {
                     Rating: {restaurants[firstIndex].rating}
                   </p>
                   <p className="text-lg text-white text-shadow-lg">
-                    {" "}
                     {restaurants[firstIndex].tags}
                   </p>
                 </div>
@@ -111,22 +112,13 @@ export const LastBiteStanding = () => {
                     Rating: {restaurants[secondIndex].rating}
                   </p>
                   <p className="text-lg text-white text-shadow-lg">
-                    {" "}
                     {restaurants[secondIndex].tags}
                   </p>
                 </div>
               </button>
             </div>
           </>
-        ) : (
-          <>
-            {" "}
-            <div className="flex justify-center min-h-screen items-center font-bold text-white text-9xl text-shadow-lg">
-              {" "}
-              Loading...{" "}
-            </div>{" "}
-          </>
-        )}
+        ) : null}
       </div>
     </div>
   );
