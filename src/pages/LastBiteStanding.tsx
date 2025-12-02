@@ -1,4 +1,4 @@
-const TEST_MODE = true;
+const TEST_MODE = false;
 
 import { useEffect, useRef, useState } from "react";
 import { fetchNearbyRestaurants, type Restaurant } from "../services/placesApi";
