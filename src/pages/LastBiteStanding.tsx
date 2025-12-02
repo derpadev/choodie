@@ -141,7 +141,7 @@ export const LastBiteStanding = () => {
     // Background
     <div className="bg-[url('/LastBiteStandingBackground.jpg')] bg-cover bg-center min-h-screen">
       {/* Blur Effect */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm">
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm bg-cover min-h-screen">
         {loading ? (
           <div className="flex justify-center min-h-screen items-center font-bold text-white text-9xl text-shadow-lg">
             Loading...
@@ -176,13 +176,13 @@ export const LastBiteStanding = () => {
             <>
               {TEST_MODE ? (
                 <div className="relative flex justify-center min-h-screen items-center space-x-8 md:space-x-12 lg:space-x-16 p-8 md:p-12 ">
-                  {/* <div>
+                  <div>
                     {tournament.map((tournament, index) => (
                       <div key={index}>
                         <h2 className="bg-white border ">{tournament.title}</h2>
                       </div>
                     ))}
-                  </div> */}
+                  </div>
                   {/* TEST Card 1 */}
                   <button
                     onClick={() => handleSelect(secondIndex)}
@@ -230,19 +230,19 @@ export const LastBiteStanding = () => {
                   {/* Card 1 */}
                   <button
                     onClick={() => handleSelect(secondIndex)}
-                    className="w-108 h-[36rem] bg-cover rounded-xl hover:bg-gray-200 active:scale-105 p-0 flex flex-col justify-end text-left"
+                    className="w-78 md:w-92 lg:w-108 h-[20rem] md:h-[28rem] lg:h-[36rem] bg-cover bg-white rounded-xl hover:bg-gray-200 active:scale-105 p-0 flex flex-col justify-end text-left"
                     style={{
                       backgroundImage: `url(${tournament[firstIndex].image})`,
                     }}
                   >
                     <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
-                      <h1 className="text-4xl font-bold mb-4 text-white text-shadow-lg">
+                      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-white text-shadow-lg">
                         {tournament[firstIndex].title}
                       </h1>
-                      <p className="text-xl mb-2 text-white text-shadow-lg">
+                      <p className="text-md md:text-lg lg:text-xl mb-2 text-white text-shadow-lg">
                         Rating: {tournament[firstIndex].rating}
                       </p>
-                      <p className="text-lg text-white text-shadow-lg">
+                      <p className="text-sm md:text-md lg:text-lg text-white text-shadow-lg">
                         {tournament[firstIndex].tags}
                       </p>
                     </div>
@@ -251,19 +251,19 @@ export const LastBiteStanding = () => {
                   {/* Card 2 */}
                   <button
                     onClick={() => handleSelect(firstIndex)}
-                    className="w-108 h-[36rem] bg-cover bg-white rounded-xl text-center hover:bg-gray-200 active:scale-105 p-0 flex flex-col justify-end text-left"
+                    className="w-78 md:w-96 lg:w-108 h-[20rem] md:h-[28rem] lg:h-[36rem] bg-cover bg-white rounded-xl hover:bg-gray-200 active:scale-105 p-0 flex flex-col justify-end text-left"
                     style={{
                       backgroundImage: `url(${tournament[secondIndex].image})`,
                     }}
                   >
                     <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
-                      <h1 className="text-4xl font-bold mb-4 text-white text-shadow-lg">
+                      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-white text-shadow-lg">
                         {tournament[secondIndex].title}
                       </h1>
-                      <p className="text-xl mb-2 text-white text-shadow-lg">
+                      <p className="text-md md:text-lg lg:text-xl mb-2 text-white text-shadow-lg">
                         Rating: {tournament[secondIndex].rating}
                       </p>
-                      <p className="text-lg text-white text-shadow-lg">
+                      <p className="text-sm md:text-md lg:text-lg text-white text-shadow-lg">
                         {tournament[secondIndex].tags}
                       </p>
                     </div>
