@@ -77,7 +77,17 @@ Perfect for friends, dates, or anyone struggling to decide where to eat!
 
 ---
 
-## License
+```bash
+# Open your terminal and run:
 
-This project is open-source. Feel free to use and modify it under the [MIT License](LICENSE).
+# Clone the repository
+$ git clone https://github.com/derpadev/choodie.git
 
+# Navigate into the project root
+$ cd choodie
+
+# Install dependencies 
+$ npm install    # or yarn install
+
+# Start the project
+$ npm run dev    # or yarn dev 

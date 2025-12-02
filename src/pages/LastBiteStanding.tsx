@@ -186,7 +186,7 @@ export const LastBiteStanding = () => {
                   {/* TEST Card 1 */}
                   <button
                     onClick={() => handleSelect(secondIndex)}
-                    className="w-108 h-[36rem] bg-cover rounded-xl hover:bg-gray-200 active:scale-105 p-0 flex flex-col justify-end text-left"
+                    className="w-108 h-[36rem] bg-cover bg-white rounded-xl hover:bg-gray-200 active:scale-105 p-0 flex flex-col justify-end text-left"
                     style={{
                       backgroundImage: `url(${tournament[firstIndex].image})`,
                     }}
@@ -194,7 +194,6 @@ export const LastBiteStanding = () => {
                     <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
                       <h1 className="text-4xl font-bold mb-4 text-white text-shadow-lg">
                         {tournament[firstIndex].title}
-                        {firstIndex}
                       </h1>
                       <p className="text-xl mb-2 text-white text-shadow-lg">
                         Rating: {tournament[firstIndex].rating}
@@ -208,7 +207,7 @@ export const LastBiteStanding = () => {
                   {/* TEST Card 2 */}
                   <button
                     onClick={() => handleSelect(firstIndex)}
-                    className="w-108 h-[36rem] bg-cover bg-white rounded-xl text-center hover:bg-gray-200 active:scale-105 p-0 flex flex-col justify-end text-left"
+                    className="w-108 h-[36rem] bg-cover bg-white rounded-xl hover:bg-gray-200 active:scale-105 p-0 flex flex-col justify-end text-left"
                     style={{
                       backgroundImage: `url(${tournament[secondIndex].image})`,
                     }}
@@ -216,7 +215,6 @@ export const LastBiteStanding = () => {
                     <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
                       <h1 className="text-4xl font-bold mb-4 text-white text-shadow-lg">
                         {tournament[secondIndex].title}
-                        {secondIndex}
                       </h1>
                       <p className="text-xl mb-2 text-white text-shadow-lg">
                         Rating: {tournament[secondIndex].rating}
@@ -240,7 +238,6 @@ export const LastBiteStanding = () => {
                     <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
                       <h1 className="text-4xl font-bold mb-4 text-white text-shadow-lg">
                         {tournament[firstIndex].title}
-                        {firstIndex}
                       </h1>
                       <p className="text-xl mb-2 text-white text-shadow-lg">
                         Rating: {tournament[firstIndex].rating}
@@ -262,7 +259,6 @@ export const LastBiteStanding = () => {
                     <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
                       <h1 className="text-4xl font-bold mb-4 text-white text-shadow-lg">
                         {tournament[secondIndex].title}
-                        {secondIndex}
                       </h1>
                       <p className="text-xl mb-2 text-white text-shadow-lg">
                         Rating: {tournament[secondIndex].rating}
