@@ -77,7 +77,7 @@ Perfect for friends, dates, or anyone struggling to decide where to eat!
 
 ---
 
-# How To Build
+## How To Build
 
 ```bash
 # Open your terminal and run:
