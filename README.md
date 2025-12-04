@@ -1,4 +1,4 @@
-# Last Bite Standing 🍽️
+# Choodie 🍽️
 
 **A location-based restaurant recommendation game.**
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-**Last Bite Standing** helps users find restaurants in a fun and interactive way. Using a **tournament-style bracket**, users make quick choices between two restaurants at a time, eliminating indecision until a single winner is crowned.
+**Choodie** helps users find restaurants in a fun and interactive way. Using a **tournament-style bracket**, users make quick choices between two restaurants at a time, eliminating indecision until a single winner is crowned.
 
 Perfect for friends, dates, or anyone struggling to decide where to eat!
 
