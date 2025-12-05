@@ -254,14 +254,25 @@ export const LastBiteStanding = () => {
         ) : restaurants.length > 0 ? (
           winner ? (
             // Winner
-            <div className="relative flex justify-center min-h-screen items-center space-x-12">
-              <button
-                onClick={() => handleSelect(secondIndex)}
-                className="w-108 h-[36rem] bg-cover rounded-xl hover:scale-105 active:scale-100 p-0 flex flex-col justify-end text-left"
+            <div className="flex flex-col justify-center min-h-screen items-center space-x-12">
+              <div
+                className="relative mx-auto w-[27rem] h-[36rem] bg-cover rounded-xl p-0 flex flex-col justify-end text-left"
                 style={{
                   backgroundImage: `url(${tournament[0].image})`,
                 }}
               >
+                <button
+                  onClick={() => {
+                    window.open(
+                      `https://www.google.com/maps/search/?api=1&query=${tournament[0].title}${tournament[0].address}`,
+                      "_blank"
+                    );
+                  }}
+                  className="absolute top-4 right-4 bg-blue-500 text-white font-semibold rounded-xl px-3 py-1 hover:scale-105 active:scale-100 transition"
+                >
+                  Directions!
+                </button>
+
                 <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
                   <h1 className="text-4xl font-bold mb-4 text-white text-shadow-lg">
                     {tournament[0].title}
@@ -283,7 +294,7 @@ export const LastBiteStanding = () => {
                     })}
                   </div>
                 </div>
-              </button>
+              </div>
             </div>
           ) : (
             <>
@@ -297,7 +308,7 @@ export const LastBiteStanding = () => {
                         </h2>
                       </div>
                     ))}
-                    <div>
+                    {/* <div>
                       {Object.entries(tagColorMap).map(([tag, color], i) => (
                         <p
                           key={i}
@@ -306,7 +317,7 @@ export const LastBiteStanding = () => {
                           {tag}
                         </p>
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                   {/* TEST Card 1 */}
                   <button
@@ -338,7 +349,6 @@ export const LastBiteStanding = () => {
                             );
                           })}
                       </div>
-                      182f5f560c76f2f26ed5d370d768ee196671a20e
                     </div>
                   </button>
 
@@ -357,8 +367,7 @@ export const LastBiteStanding = () => {
                       <p className="text-md md:text-lg lg:text-xl mb-2 text-white text-shadow-lg">
                         Rating: {tournament[secondIndex].rating}
                       </p>
-                      =======
-                      <p className="text-sm md:text-md lg:text-lg text-white text-shadow-lg">
+                      <p className="text-sm md:text-md lg:text-lg text-white text-shadow-lg space-x-4">
                         {tournament[secondIndex]?.tags
                           .split(",")
                           .map((rawTag) => {
